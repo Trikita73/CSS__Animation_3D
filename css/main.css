@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --index: calc(1vw + 1vh);
+}
+
+body {
+    background-color: #141414;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.items {
+    display: flex;
+    gap: .4rem; /*отступы между item*/
+    perspective: calc(var(--index) * 35);
+}
+
+.item {
+    width: calc(var(--index) * 3);
+    height: calc(var(--index) * 12);
+    background-color: #222;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    filter: grayscale() brightness(.5)
+}
+
+.items .item.active {
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 10));
+}
+
+/* Right */
+
+/* (+ *) означает что любой елемент после класса: .item.active получит указанные свойства кот. ниже */
+.items .item.active + * { 
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 8.5));
+    z-index: -1;
+}
+
+.items .item.active + * + * { 
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 5.6));
+    z-index: -2;
+}
+
+.items .item.active + * + * + * { 
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 2.4));
+    z-index: -3;
+}
+
+.items .item.active + * + * + *  + *{ 
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * .6));
+    z-index: -4;
+}
+
+
+/* Left */
+
+/* :has(+ .active) означает что любой елемент до класса: .item.active получит указанные свойства кот. ниже */
+.items .item:has(+ .active) { 
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 8.5));
+}
+
+.items .item:has( + * + .active) { 
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 5.6));
+}
+
+.items .item:has( + * + * + .active) { 
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 2.4));
+}
+
+.items .item:has( + * + * + * + .active) { 
+    filter: inherit; 
+    transform: translateZ(calc(var(--index) * .6));
+}
