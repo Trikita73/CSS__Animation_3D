@@ -58,7 +58,7 @@ body {
 
 /* Right */
 
-/* (.class:hover + *) означает что любой елемент после класса: .item.active получит указанные свойства кот. ниже */
+/* (.class:hover + *) означает что любой елемент после класса: .item:hover получит указанные свойства кот. ниже */
 .items .item:hover + * { 
     filter: inherit;
     transform: translateZ(calc(var(--index) * 8.5)) rotateY(35deg);
@@ -86,7 +86,7 @@ body {
 
 /* Left */
 
-/* :has(+ :hover) означает что любой елемент до класса: .item.active получит указанные свойства кот. ниже */
+/* :has(+ :hover) означает что любой елемент до класса: .item:hover получит указанные свойства кот. ниже */
 .items .item:has(+ :hover) { 
     filter: inherit;
     transform: translateZ(calc(var(--index) * 8.5)) rotateY(-35deg);
